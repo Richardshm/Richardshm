@@ -33,6 +33,9 @@ void setup() {
 
   //Encendemos la luz de fondo.
   lcd.backlight();
+
+  //Espera dos segundos para la primera toma de datos.
+  delay(2000);
   
 }
 
@@ -43,9 +46,6 @@ void loop() {
 
   //Se lee el sensor de humedad del suelo el cual esta conectado en A0
   val = analogRead(0);
-  
-  //Espera dos segundos para la primera toma de datos.
-  delay(2000);
 
    //Se lee la humedad
   float h = dht.readHumidity();
@@ -64,25 +64,84 @@ void loop() {
     lcd.print("HA:");
     lcd.setCursor(3,0);
     lcd.print(int(h));
-    delay(100);}
+    lcd.setCursor(5,0);
+    lcd.print("%");
+    lcd.setCursor(7,0);
+    lcd.print("TA:");
+    lcd.setCursor(10,0);
+    lcd.print(t);
+    lcd.setCursor(15,0);
+    lcd.print("C");
+    lcd.setCursor(0,1);
+    lcd.print("HT:");
+    lcd.setCursor(3,1);
+    lcd.print("      ");
+    lcd.setCursor(3,1);
+    lcd.print("SECO");
+    lcd.setCursor(10,1);
+    lcd.print("SA:");
+    lcd.setCursor(13,1);
+    lcd.print("   ");
+    lcd.setCursor(13,1);
+    lcd.print("ON");
+    delay(100);
+    }
 
   if(val > 350 && val <= 430){
-    Serial.print("Humedo:  ");
-    Serial.print(val);
-    Serial.print(F("  Humeda aire: "));
-    Serial.print(h);
-    Serial.print(F("%  Temperature: "));
-    Serial.println(t);
-    delay(100);}
+    lcd.setCursor(0, 0);
+    lcd.print("HA:");
+    lcd.setCursor(3,0);
+    lcd.print(int(h));
+    lcd.setCursor(5,0);
+    lcd.print("%");
+    lcd.setCursor(7,0);
+    lcd.print("TA:");
+    lcd.setCursor(10,0);
+    lcd.print(t);
+    lcd.setCursor(15,0);
+    lcd.print("C");
+    lcd.setCursor(0,1);
+    lcd.print("HT:");
+    lcd.setCursor(3,1);
+    lcd.print("      ");
+    lcd.setCursor(3,1);
+    lcd.print("HUMEDO");
+    lcd.setCursor(10,1);
+    lcd.print("SA:");
+    lcd.setCursor(13,1);
+    lcd.print("   ");
+    lcd.setCursor(13,1);
+    lcd.print("OFF");
+    delay(100);
+    }
 
   if(val>260 && val <= 350){
-    Serial.print("Agua:  ");
-    Serial.print(val);
-    Serial.print(F("  Humeda aire: "));
-    Serial.print(h);
-    Serial.print(F("%  Temperature: "));
-    Serial.println(t);
-    delay(100);}
+    lcd.setCursor(0, 0);
+    lcd.print("HA:");
+    lcd.setCursor(3,0);
+    lcd.print(int(h));
+    lcd.setCursor(5,0);
+    lcd.print("%");
+    lcd.setCursor(7,0);
+    lcd.print("TA:");
+    lcd.setCursor(10,0);
+    lcd.print(t);
+    lcd.setCursor(15,0);
+    lcd.print("C");
+    lcd.setCursor(0,1);
+    lcd.print("HT:");
+    lcd.setCursor(3,1);
+    lcd.print("      ");
+    lcd.setCursor(3,1);
+    lcd.print("AGUA");
+    lcd.setCursor(10,1);
+    lcd.print("SA:");
+    lcd.setCursor(13,1);
+    lcd.print("   ");
+    lcd.setCursor(13,1);
+    lcd.print("OFF");
+    delay(100);
+    }
 
 
 }
