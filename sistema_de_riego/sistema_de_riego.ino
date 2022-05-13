@@ -17,6 +17,9 @@ DHT dht(DHTPIN, DHTTYPE);
 //Crear el objeto lcd en 0x3F y 16 columnas x 2 filas
 LiquidCrystal_I2C lcd(0x27,20,4);  //
 
+//Pin señal de control relevo
+const int ledPIN = 4;
+
 void setup() {
 
   //Se inicia la comunicacion serial a 9600 baudios
@@ -33,6 +36,12 @@ void setup() {
 
   //Encendemos la luz de fondo.
   lcd.backlight();
+
+  //Definimos el pin de control como salida
+  pinMode(ledPIN , OUTPUT);
+
+  // ponemos el Pin en LOW
+  digitalWrite(ledPIN , LOW);    
 
   //Espera dos segundos para la primera toma de datos.
   delay(2000);
@@ -84,7 +93,8 @@ void loop() {
     lcd.print("   ");
     lcd.setCursor(13,1);
     lcd.print("ON");
-    delay(100);
+    digitalWrite(ledPIN , HIGH);
+    delay(500);
     }
 
   if(val > 350 && val <= 430){
@@ -112,7 +122,8 @@ void loop() {
     lcd.print("   ");
     lcd.setCursor(13,1);
     lcd.print("OFF");
-    delay(100);
+    digitalWrite(ledPIN , LOW);
+    delay(500);
     }
 
   if(val>260 && val <= 350){
@@ -140,7 +151,8 @@ void loop() {
     lcd.print("   ");
     lcd.setCursor(13,1);
     lcd.print("OFF");
-    delay(100);
+    digitalWrite(ledPIN , LOW);
+    delay(500);
     }
 
 
