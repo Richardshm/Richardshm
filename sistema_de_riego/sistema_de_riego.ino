@@ -94,7 +94,7 @@ void loop() {
     lcd.setCursor(13,1);
     lcd.print("ON");
     digitalWrite(ledPIN , HIGH);
-    delay(500);
+    delay(100);
     }
 
   if(val > 350 && val <= 430){
@@ -123,7 +123,7 @@ void loop() {
     lcd.setCursor(13,1);
     lcd.print("OFF");
     digitalWrite(ledPIN , LOW);
-    delay(500);
+    delay(100);
     }
 
   if(val>260 && val <= 350){
@@ -152,7 +152,7 @@ void loop() {
     lcd.setCursor(13,1);
     lcd.print("OFF");
     digitalWrite(ledPIN , LOW);
-    delay(500);
+    delay(100);
     }
 
 
